@@ -1,0 +1,26 @@
+.has-error input, .has-error select, .has-error textarea{
+	border-color: #a94442 !important;
+}
+.b__multi__select__list .list-item .content{
+	min-height: inherit;
+}
+.b-float-label input.b__input:disabled, .b-textarea textarea:disabled,.b-select select:disabled {
+    border-color: transparent !important;
+    color: inherit !important;
+}
+.disabled{
+	cursor: not-allowed !important;
+    pointer-events: none;
+}
+.not-allowed{
+	cursor: not-allowed !important;
+}
+.modal-header .modal-title{
+	display: inline-block;
+}
+.b__components.b__multi__select .close-item i{
+    padding-top: 6px;
+}
+.detail .b-select select:disabled, .detail .b__components.b__multi__select.disabled{
+	opacity: 1;
+}

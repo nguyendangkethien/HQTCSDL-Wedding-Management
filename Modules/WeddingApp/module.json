@@ -1,0 +1,17 @@
+{
+    "name": "WeddingApp",
+    "alias": "weddingapp",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 1,
+    "providers": [
+        "Modules\\WeddingApp\\Providers\\WeddingAppServiceProvider",
+        "Modules\\WeddingApp\\Providers\\RouteServiceProvider"
+    ],
+    "aliases": {},
+    "files": [
+        
+    ],
+    "requires": []
+}

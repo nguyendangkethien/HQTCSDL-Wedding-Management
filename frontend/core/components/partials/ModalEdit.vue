@@ -56,7 +56,7 @@
             btnTitleCancel(){
                 if(this.configs.btnCancel)
                     return this.configs.btnCancel
-                return 'Thoát'
+                return 'Hủy'
             },
             modalSize()
             {

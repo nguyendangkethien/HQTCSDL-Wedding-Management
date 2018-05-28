@@ -53,7 +53,17 @@ class RegisterWeddingAppSidebar implements \Maatwebsite\Sidebar\SidebarExtender
                     );
                 });
 
+                $item->item(trans('weddingapp::halls.title.halls'), function (Item $item) {
+                    $item->icon('fa fa-copy');
+                    $item->weight(0);
+                    $item->append('admin.weddingapp.hall.create');
+                    $item->route('admin.weddingapp.hall.index');
+                    $item->authorize(
+                        $this->auth->hasAccess('weddingapp.halls.index')
+                    );
+                });
 // append
+
             });
         });
         return $menu;

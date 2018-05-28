@@ -30,7 +30,9 @@ class WeddingAppServiceProvider extends ServiceProvider
 
         $this->app['events']->listen(LoadingBackendTranslations::class, function (LoadingBackendTranslations $event) {
             $event->load('weddings', array_dot(trans('weddingapp::weddings')));
+            $event->load('halls', array_dot(trans('weddingapp::halls')));
             // append translations
+
 
         });
     }
@@ -66,7 +68,20 @@ class WeddingAppServiceProvider extends ServiceProvider
                 return new \Modules\WeddingApp\Repositories\Cache\CacheWeddingDecorator($repository);
             }
         );
+        $this->app->bind(
+            'Modules\WeddingApp\Repositories\HallRepository',
+            function () {
+                $repository = new \Modules\WeddingApp\Repositories\Eloquent\EloquentHallRepository(new \Modules\WeddingApp\Entities\Hall());
+
+                if (! config('app.cache')) {
+                    return $repository;
+                }
+
+                return new \Modules\WeddingApp\Repositories\Cache\CacheHallDecorator($repository);
+            }
+        );
 // add bindings
+
 
     }
 }

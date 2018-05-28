@@ -90,7 +90,6 @@
 	        loadding,
 	    },
 		data(){
-	    	let locationPath = this.$route.path
 	    	return{
 	    		isCreate : false,
 	    		isLoadding : false,
@@ -188,24 +187,25 @@
 	    		})
 	    	},
 	    	reRenderTable(data){
+	    		let self = this
              	$("#hall-management-table").DataTable({
                     data: data,
                     "aaSorting": [],
                     columns: [
                         {
                             data: null, render: function (data) {
-                              	if(locationPath.indexOf('/edit-hall/') == -1)
-		                            return `<a href="./weddingapp/weddings#`+ locationPath + `/edit-hall/` + data.id + `" class="btn-edit-contact" style="display:inline-block; cursor:pointer">` + fullName + `</a>`;
+                              	if(self.$route.path.indexOf('/edit-hall/') == -1)
+		                            return `<a href="./weddings#`+ self.$route.path + `edit-hall/` + data.id + `" class="btn-edit-contact" style="display:inline-block; cursor:pointer">` + data.id + `</a>`;
 		                        else
-		                            return `<a href="./weddingapp/weddings#`+ locationPath + `" class="btn-edit-contact" style="display:inline-block; cursor:pointer">` + fullName + `</a>`;
+		                            return `<a href="./weddings#`+ self.$route.path + `" class="btn-edit-contact" style="display:inline-block; cursor:pointer">` + data.id + `</a>`;
 		                    }
                         },
                         {
                             data: null, render: function (data) {
-                              	if(locationPath.indexOf('/edit-hall/') == -1)
-		                            return `<a href="./weddingapp/weddings#`+ locationPath + `/edit-hall/` + data.name + `" class="btn-edit-contact" style="display:inline-block; cursor:pointer">` + fullName + `</a>`;
+                              	if(self.$route.path.indexOf('/edit-hall/') == -1)
+		                            return `<a href="./weddings#`+ self.$route.path + `edit-hall/` + data.id + `" class="btn-edit-contact" style="display:inline-block; cursor:pointer">` + data.name + `</a>`;
 		                        else
-		                            return `<a href="./weddingapp/weddings#`+ locationPath + `" class="btn-edit-contact" style="display:inline-block; cursor:pointer">` + fullName + `</a>`;
+		                            return `<a href="./weddings#`+ self.$route.path + `" class="btn-edit-contact" style="display:inline-block; cursor:pointer">` + data.name + `</a>`;
 		                    }
                         },
                         {

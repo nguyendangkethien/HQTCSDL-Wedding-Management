@@ -37,6 +37,40 @@ $router->group(['prefix' =>'/weddingapp'], function (Router $router) {
         'uses' => 'WeddingController@destroy',
         'middleware' => 'can:weddingapp.weddings.destroy'
     ]);
+    $router->bind('hall', function ($id) {
+        return app('Modules\WeddingApp\Repositories\HallRepository')->find($id);
+    });
+    $router->get('halls', [
+        'as' => 'admin.weddingapp.hall.index',
+        'uses' => 'HallController@index',
+        'middleware' => 'can:weddingapp.halls.index'
+    ]);
+    $router->get('halls/create', [
+        'as' => 'admin.weddingapp.hall.create',
+        'uses' => 'HallController@create',
+        'middleware' => 'can:weddingapp.halls.create'
+    ]);
+    $router->post('halls', [
+        'as' => 'admin.weddingapp.hall.store',
+        'uses' => 'HallController@store',
+        'middleware' => 'can:weddingapp.halls.create'
+    ]);
+    $router->get('halls/{hall}/edit', [
+        'as' => 'admin.weddingapp.hall.edit',
+        'uses' => 'HallController@edit',
+        'middleware' => 'can:weddingapp.halls.edit'
+    ]);
+    $router->put('halls/{hall}', [
+        'as' => 'admin.weddingapp.hall.update',
+        'uses' => 'HallController@update',
+        'middleware' => 'can:weddingapp.halls.edit'
+    ]);
+    $router->delete('halls/{hall}', [
+        'as' => 'admin.weddingapp.hall.destroy',
+        'uses' => 'HallController@destroy',
+        'middleware' => 'can:weddingapp.halls.destroy'
+    ]);
 // append
+
 
 });

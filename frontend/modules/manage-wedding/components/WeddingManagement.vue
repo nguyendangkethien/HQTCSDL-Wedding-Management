@@ -123,6 +123,7 @@
 				                <th>Ngày</th>
 				                <th>Giờ</th>
 				                <th>Số Lượng Bàn</th>
+				                <th>Lập Hóa Đơn</th>
 			              	</tr>
 			            </thead>
 			            <tfoot>
@@ -134,6 +135,7 @@
 				                <th>Ngày</th>
 				                <th>Giờ</th>
 				                <th>Số Lượng Bàn</th>
+				                <th>Lập Hóa Đơn</th>
 			              	</tr>
 			            </tfoot>
 			      	</table>
@@ -327,24 +329,34 @@
 	    		})
 	    	},
 	    	reRenderTable(data){
+	    		let self = this
              	$("#wedding-management-table").DataTable({
                     data: data,
                     "aaSorting": [],
                     columns: [
                         {
                             data: null, render: function (data) {
-                              	return data.id;
+                              	if(self.$route.path.indexOf('/edit-order/') == -1)
+		                            return `<a href="./weddings#`+ self.$route.path + `edit-order/` + data.id + `" class="btn-edit-contact" style="display:inline-block; cursor:pointer">` + data.id + `</a>`;
+		                        else
+		                            return `<a href="./weddings#`+ self.$route.path + `" class="btn-edit-contact" style="display:inline-block; cursor:pointer">` + data.id + `</a>`;
                             }
                         },
                         {
                             data: null, render: function (data) {
-                              	return data.male;
+                              	if(self.$route.path.indexOf('/edit-order/') == -1)
+		                            return `<a href="./weddings#`+ self.$route.path + `edit-order/` + data.id + `" class="btn-edit-contact" style="display:inline-block; cursor:pointer">` + data.male + `</a>`;
+		                        else
+		                            return `<a href="./weddings#`+ self.$route.path + `" class="btn-edit-contact" style="display:inline-block; cursor:pointer">` + data.male + `</a>`;
                             }
                         },
                         {
                             data: null,
                             render: function (data) {
-                                return data.female;
+                                if(self.$route.path.indexOf('/edit-order/') == -1)
+		                            return `<a href="./weddings#`+ self.$route.path + `edit-order/` + data.id + `" class="btn-edit-contact" style="display:inline-block; cursor:pointer">` + data.female + `</a>`;
+		                        else
+		                            return `<a href="./weddings#`+ self.$route.path + `" class="btn-edit-contact" style="display:inline-block; cursor:pointer">` + data.female + `</a>`;
                             }
                         },
                         {
@@ -367,6 +379,15 @@
                                 return data.table_extra;
                             }
                         },
+                        {
+                            data: null, render: function (data) {
+                                if(self.$route.path.indexOf('/payment-bill/') == -1)
+		                            return `<a href="./weddings#`+ self.$route.path + `payment-bill/` + data.id + `" class="btn-edit-contact" style="display:inline-block; cursor:pointer"><i class="fa fa-address-card-o"></i></a>`;
+		                        else
+		                            return `<a href="./weddings#`+ self.$route.path + `" class="btn-edit-contact" style="display:inline-block; cursor:pointer"><i class="fa fa-address-card-o"></i></a>`;
+                            }
+                        },
+                        
                     ],
                     select: true,
                     destroy: true,
